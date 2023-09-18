@@ -1,1 +1,19 @@
-test
+name: Main
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Załadowanie kodu
+      uses: actions/checkout@v3
+    - name: Połączenie Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: "16.x"
+    - name: Instalacja dependencji
+      run: npm install
+    - name: uruchomienie testów
+      run: npm run test
